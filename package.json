@@ -22,7 +22,6 @@
     "README.md"
   ],
   "scripts": {
-    "prepare": "bun run build",
     "build": "bun run scripts/build.ts",
     "dev": "bun run build && node bin/codeforge",
     "start": "node bin/codeforge",

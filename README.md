@@ -17,20 +17,27 @@ Codeforge is a terminal-first AI coding assistant that works with OpenAI, Anthro
 
 ## Install
 
-### One-liner (from GitHub)
+### From source (recommended)
 
 ```bash
-# Install bun first (one-time)
+# 1. Install bun (one-time)
 npm install -g bun
 
-# Install codeforge globally from GitHub
-npm install -g github:adarsh22-dev/codeforge-cli
+# 2. Clone and enter the project
+git clone https://github.com/adarsh22-dev/codeforge-cli.git
+cd codeforge-cli
 
-# Start coding
+# 3. Install deps and build
+bun install
+bun run build
+
+# 4. Use it
+node bin/codeforge
+
+# (Optional) Install globally so you can run 'codeforge' anywhere
+npm install -g .
 codeforge
 ```
-
-### From source
 
 ```bash
 git clone https://github.com/adarsh22-dev/codeforge-cli.git
