@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "src/entrypoints/cli.tsx",
+    "src/entrypoints/mcp.ts",
+    "src/entrypoints/init.ts",
+    "src/entrypoints/sdk/index.ts",
+    "src/main.tsx",
+    "scripts/build.ts",
+    "scripts/system-check.ts",
+    "bin/codeforge"
+  ],
+  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.ts"],
+  "ignoreDependencies": [],
+  "ignore": []
+}

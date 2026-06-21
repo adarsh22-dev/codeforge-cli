@@ -1,0 +1,16 @@
+node_modules
+dist
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+coverage
+reports
+docs
+*.md
+!.dockerignore
+.Dockerfile
+.github
+__pycache__
+*.pyc

@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+// Codeforge CLI — fast bootstrap with lazy imports
+// This launcher stays small; the real logic is in dist/cli.mjs
+
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// Fast path: --version
+if (process.argv.includes('--version') || process.argv.includes('-v')) {
+  const pkg = JSON.parse(
+    await import('node:fs').then((fs) =>
+      fs.promises.readFile(join(__dirname, '..', 'package.json'), 'utf-8')
+    )
+  )
+  console.log(pkg.version)
+  process.exit(0)
+}
+
+// Fast path: --help
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  console.log(`
+Codeforge — a multi-provider coding-agent CLI
+
+Usage:
+  codeforge [options] [prompt]
+
+Options:
+  --version, -v           Show version
+  --help, -h              Show help
+  --model <model>         Model to use (e.g. gpt-4o, claude-sonnet-4)
+  --provider <provider>   Provider to use (openai, anthropic, gemini, ollama)
+  --print                 Non-interactive mode, print response
+  --bg                    Run in background
+  --name <name>           Session name (for --bg)
+  --provider-env-file     Path to .env file for provider setup
+
+Interactive commands (inside the REPL):
+  /help      Show available commands
+  /model     Switch model
+  /provider  Switch provider
+  /compact   Compact conversation
+  /clear     Clear screen
+  /cost      Show cost
+  /doctor    Run diagnostics
+  /exit      Exit
+
+Examples:
+  codeforge
+  codeforge --print "explain this codebase"
+  codeforge --bg "fix failing tests"
+  codeforge --model gpt-4o --provider openai
+  `)
+  process.exit(0)
+}
+
+// Load the full CLI
+try {
+  const cliPath = join(__dirname, '..', 'dist', 'cli.mjs')
+  await import(cliPath)
+} catch (err) {
+  console.error('Failed to start codeforge:', err.message)
+  console.error('Run "bun run build" first, or install from npm.')
+  process.exit(1)
+}

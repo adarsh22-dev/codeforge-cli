@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+codeforge-profile.json
+reports/
+coverage/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+package-lock.json
