@@ -9,27 +9,35 @@ Codeforge is a terminal-first AI coding assistant that works with OpenAI, Anthro
 ## Prerequisites
 
 - **Node.js >= 22.0.0** — [Download](https://nodejs.org/)
-- **Bun** (for development only) — `npm install -g bun`
+- **Bun** — `npm install -g bun` (required to build from source)
 - **ripgrep** (recommended for Grep tool) — `winget install BurntSushi.ripgrep` or `scoop install ripgrep`
 - An **API key** from at least one provider
 
 ---
 
-## Install (from source)
+## Install
+
+### One-liner (from GitHub)
 
 ```bash
-# 1. Clone or cd into the project
-cd C:\Users\Adarsh Singh\Desktop\codeforge
+# Install bun first (one-time)
+npm install -g bun
 
-# 2. Install dependencies
+# Install codeforge globally from GitHub
+npm install -g github:adarsh22-dev/codeforge-cli
+
+# Start coding
+codeforge
+```
+
+### From source
+
+```bash
+git clone https://github.com/adarsh22-dev/codeforge-cli.git
+cd codeforge-cli
 bun install
-
-# 3. Build the CLI
 bun run build
-
-# 4. Verify it worked
-node dist/cli.mjs --version
-# Should print: 0.1.0
+node bin/codeforge
 ```
 
 ---
